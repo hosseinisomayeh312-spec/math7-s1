@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14213d">
+<title>مأموریت نجات شهر ریاضی | پایه هفتم</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--cyan:#06b6d4;--gold:#f59e0b;--green:#16a34a;--red:#dc2626;--paper:#f4f7fb;--ink:#172033;--muted:#64748b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 5%,#dbeafe 0,transparent 27%),radial-gradient(circle at 90% 20%,#cffafe 0,transparent 25%),var(--paper);font-family:Tahoma,Arial,sans-serif;color:var(--ink);line-height:1.8}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:11px 18px;font-weight:bold;transition:.18s}button:disabled{opacity:.45;cursor:not-allowed}
+.wrap{max-width:980px;margin:auto;padding:22px 16px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}.brand{font-size:14px;color:var(--muted)}.teacher-btn{background:#e2e8f0;color:var(--navy);padding:8px 13px}
+.hero,.panel{background:#fff;border:1px solid #e5eaf2;border-radius:24px;padding:clamp(20px,4vw,36px);box-shadow:0 14px 38px #14213d12}
+.hero{text-align:center;background:linear-gradient(135deg,#14213d,#1e3a8a);color:white;position:relative;overflow:hidden}.hero:after{content:"✦";position:absolute;font-size:180px;opacity:.08;left:20px;top:-60px}.hero h1{font-size:clamp(25px,5vw,40px);margin:5px 0}.hero p{color:#dbeafe;margin:5px 0}.tag{display:inline-block;background:#ffffff20;border:1px solid #ffffff40;border-radius:50px;padding:4px 13px;font-size:13px}
+h2{margin:0 0 10px;font-size:23px}h3{margin:0 0 8px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:20px 0}.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:5px}.field input{width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:12px;background:#fbfdff;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb18}
+.primary{background:var(--blue);color:white}.primary:hover{background:#1d4ed8;transform:translateY(-1px)}.secondary{background:#e2e8f0;color:var(--navy)}.gold{background:var(--gold);color:#321d00}.danger{background:#fee2e2;color:#991b1b}
+.note{font-size:13px;color:var(--muted);background:#f8fafc;padding:12px 14px;border-radius:12px;margin-top:12px}
+.hidden{display:none!important}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}.progress{height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:8px 0 18px}.progress>div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));width:0;transition:.3s}
+.stats{display:flex;gap:9px;flex-wrap:wrap}.stat{background:#eff6ff;color:#1e40af;border-radius:12px;padding:6px 11px;font-size:13px}
+.stage-title{display:flex;align-items:center;gap:12px;margin-bottom:12px}.stage-icon{width:52px;height:52px;border-radius:16px;background:#dbeafe;display:grid;place-items:center;font-size:27px}
+.question{font-size:18px;font-weight:bold;margin:14px 0}.answer-area{background:#f8fafc;border:1px solid #e2e8f0;border-radius:17px;padding:18px;margin:16px 0}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{background:#fff;border:2px solid #dbe3ef;color:var(--ink);text-align:right}.choice.selected{border-color:var(--blue);background:#eff6ff}.choice.correct{border-color:var(--green);background:#dcfce7}.choice.wrong{border-color:var(--red);background:#fee2e2}
+.answer-input{max-width:260px;width:100%;padding:12px;border:2px solid #cbd5e1;border-radius:12px;background:white}.feedback{padding:12px 14px;border-radius:12px;margin-top:12px;font-weight:bold}.feedback.bad{background:#fff1f2;color:#9f1239}.feedback.good{background:#dcfce7;color:#166534}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}.hint{color:#92400e;background:#fef3c7;border-radius:12px;padding:10px 13px;margin-top:12px;font-size:14px}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:white;border-radius:12px;overflow:hidden}td,th{border:1px solid #dbe3ef;padding:9px;text-align:center}th{background:#eff6ff}
+.puzzle-grid{display:grid;grid-template-columns:repeat(3,48px);gap:3px;justify-content:center;margin:12px auto}.puzzle-grid span{height:48px;background:#bfdbfe;border:1px solid #3b82f6;border-radius:5px}
+.step-list{display:grid;gap:8px}.step-list label{background:white;border:1px solid #cbd5e1;border-radius:11px;padding:8px 12px;display:flex;gap:8px;align-items:center}
+.medal{font-size:64px;text-align:center}.certificate{text-align:center;background:linear-gradient(135deg,#fff7ed,#eff6ff);border:2px dashed #f59e0b;border-radius:20px;padding:25px}
+footer{text-align:center;color:#64748b;font-size:12px;margin:20px 0}
+.modal{position:fixed;inset:0;background:#0f172acc;display:grid;place-items:center;padding:15px;z-index:10}.modalbox{width:min(900px,100%);max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:center;gap:12px}.teacher-table{font-size:13px}.teacher-table td{overflow-wrap:anywhere}.small{font-size:12px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.wrap{padding:12px}.hero,.panel{border-radius:18px}.game-head{align-items:flex-start}.teacher-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="top"><div class="brand">اداره آموزش و پرورش دهدز | ریاضی پایه هفتم</div><button class="teacher-btn" id="teacherOpen">ورود معلم ⚙️</button></div>
+ <section class="hero">
+  <span class="tag">یک بازی آموزشی و ماجراجویانه</span>
+  <h1>🏙️ مأموریت نجات شهر ریاضی</h1>
+  <p>۸ معما، ۸ راهبرد حل مسئله؛ شهر منتظر قهرمان باهوش خود است!</p>
+  <p class="small">تدوینگران: مهدی حسینی و سمیه حسینی</p>
+ </section>
+ <section class="panel" id="startPanel" style="margin-top:18px">
+  <h2>🧭 آماده‌ای مأموریت را شروع کنی؟</h2>
+  <p class="muted">برای ورود به بازی، مشخصاتت را بنویس. کد ملی اختیاری است.</p>
+  <div class="grid">
+   <div class="field"><label for="firstName">نام</label><input id="firstName" autocomplete="given-name" placeholder="نام شما"></div>
+   <div class="field"><label for="lastName">نام خانوادگی</label><input id="lastName" autocomplete="family-name" placeholder="نام خانوادگی"></div>
+   <div class="field"><label for="className">نام کلاس</label><input id="className" placeholder="مثلاً هفتم الف"></div>
+  </div>
+  <div class="field"><label for="nationalCode">کد ملی (اختیاری)</label><input id="nationalCode" inputmode="numeric" maxlength="10" placeholder="در صورت تمایل وارد کن"></div>
+  <div class="note">قانون بازی: برای باز شدن هر مرحله باید پاسخ درست بدهی. پاسخ اشتباه باعث نمایش راهنمایی می‌شود و می‌توانی دوباره تلاش کنی.</div>
+  <div class="actions"><button class="primary" id="startBtn">شروع مأموریت 🚀</button></div>
+ </section>
+ <section class="panel hidden" id="gamePanel" style="margin-top:18px">
+  <div class="game-head"><div><div class="muted small" id="studentLabel"></div><h2 id="missionHeading">مرحله ۱ از ۸</h2></div><div class="stats"><span class="stat" id="scoreStat">امتیاز: ۰</span><span class="stat" id="errorStat">خطاها: ۰</span><span class="stat" id="timeStat">زمان: ۰۰:۰۰</span></div></div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div id="stageContent"></div>
+ </section>
+ <section class="panel hidden" id="resultPanel" style="margin-top:18px"></section>
+ <footer>این فعالیت برای تمرین راهبردهای حل مسئله طراحی شده است.</footer>
+</div>
+
+<div class="modal hidden" id="teacherModal">
+ <div class="modalbox">
+  <div class="modalhead"><h2>پنل معلم</h2><button class="secondary" id="teacherClose">بستن ✕</button></div>
+  <div id="teacherLogin">
+   <p class="muted">برای مشاهده و مدیریت نتایج، رمز عبور را وارد کنید.</p>
+   <input class="answer-input" type="password" id="teacherPassword" placeholder="رمز عبور">
+   <button class="primary" id="teacherLoginBtn">ورود</button><div id="loginMessage" class="small"></div>
+  </div>
+  <div id="teacherDashboard" class="hidden">
+   <div class="actions">
+    <button class="secondary" id="exportAllBtn">دانلود همه نتایج JSON</button>
+    <button class="secondary" id="importBtn">وارد کردن فایل JSON</button>
+    <input type="file" id="importFile" accept=".json,application/json" class="hidden">
+    <button class="danger" id="logoutTeacher">خروج از پنل</button>
+   </div>
+   <p class="muted small">نتایج این دستگاه در مرورگر ذخیره می‌شوند. برای انتقال نتایج از دستگاه دیگر، فایل JSON دانش‌آموز یا خروجی پنل را وارد کنید.</p>
+   <div id="teacherResults"></div>
+  </div>
+ </div>
+</div>
+
+<script>
+"use strict";
+// رمز پنل معلم؛ برای تغییر رمز، مقدار زیر را ویرایش کنید.
+// توجه: این رمز در کد سمت مرورگر است و امنیت واقعی یا محرمانگی حرفه‌ای ایجاد نمی‌کند.
+const TEACHER_PASSWORD = "1234";
+const STORAGE_KEY = "mathMissionResults_v1";
+const stages = [
+ {title:"کارآگاه شکل‌ها",strategy:"رسم شکل",icon:"📐",type:"choice",
+  question:"در شکل زیر ۶ مربع کوچک کنار هم در یک مستطیل ۲ ردیفی و ۳ ستونی قرار گرفته‌اند. با شمردن شکل‌های ممکن، چند مستطیل (با هر اندازه‌ای) می‌توان پیدا کرد؟",
+  visual:'<div class="puzzle-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="small muted" style="text-align:center">یک مستطیل ۲ ردیفی و ۳ ستونی</p>',
+  choices:["۱۲","۱۵","۱۸","۲۰"],answer:2,hint:"مستطیل‌ها را بر اساس اندازه دسته‌بندی کن: ۶ مستطیل ۱×۱، چهار مستطیل ۱×۲، دو مستطیل ۱×۳، سه مستطیل ۲×۱، دو مستطیل ۲×۲ و یک مستطیل ۲×۳."},
+ {title:"رمزگشای الگوها",strategy:"الگویابی",icon:"🔎",type:"number",
+  question:"در دنباله زیر هر عدد با یک قانون مشخص ساخته شده است. عدد جای خالی را پیدا کن: ۲، ۵، ۱۱، ۲۳، ۴۷، ؟",
+  answer:"95",hint:"به اختلاف‌ها یا رابطه هر عدد با عدد قبلی نگاه کن. هر بار عدد قبلی را دو برابر و سپس ۱ واحد اضافه کن."},
+ {title:"آزمایشگاه حدس‌ها",strategy:"حدس و آزمایش",icon:"🧪",type:"number",
+  question:"دو عدد طبیعی داریم که مجموعشان ۲۶ و اختلافشان ۴ است. عدد بزرگ‌تر چند است؟",
+  answer:"15",hint:"چند جفت عدد با مجموع ۲۶ را امتحان کن؛ مثل ۱۳ و ۱۳، سپس ۱۴ و ۱۲ و ... تا اختلاف ۴ شود."},
+ {title:"معمای حذف",strategy:"حذف حالت‌های نامطلوب",icon:"🧩",type:"choice",
+  question:"رمز صندوق یک عدد دو رقمی است. رقم دهگان زوج است، رقم یکان ۵ است و عدد از ۵۰ بزرگ‌تر و از ۸۰ کوچک‌تر است. کدام رمز ممکن است؟",
+  choices:["۴۵","۵۵","۶۵","۸۵"],answer:2,hint:"گزینه‌هایی را حذف کن که دهگانشان زوج نیست یا عددشان در بازه ۵۰ تا ۸۰ قرار نمی‌گیرد."},
+ {title:"مسئله‌ای ساده‌تر",strategy:"حل مسئله ساده‌تر",icon:"🪜",type:"choice",
+  question:"برای چیدن صندلی‌ها در ردیف‌های مساوی، ابتدا یک نمونه کوچک‌تر را بررسی می‌کنیم: اگر ۳ ردیف و در هر ردیف ۴ صندلی باشد، چند صندلی داریم؟",
+  choices:["۷","۱۰","۱۲","۱۴"],answer:2,hint:"تعداد ردیف‌ها را در تعداد صندلی‌های هر ردیف ضرب کن. همین ایده در مسئله‌های بزرگ‌تر هم کاربرد دارد."},
+ {title:"جدول اسرارآمیز",strategy:"جدول‌سازی",icon:"📊",type:"number",
+  question:"در جدول، عدد ردیف دوم از قانون «دو برابر عدد اول به‌علاوه یک» به دست می‌آید. خانه خالی را کامل کن.",
+  visual:'<table><tr><th>عدد اول</th><td>۱</td><td>۲</td><td>۳</td><td>۴</td></tr><tr><th>عدد دوم</th><td>۳</td><td>۵</td><td>؟</td><td>۹</td></tr></table>',
+  answer:"7",hint:"برای عدد ۳، دو برابرش کن و یک واحد به آن اضافه کن."},
+ {title:"زنجیره معماها",strategy:"زیرمسئله",icon:"🔗",type:"choice",
+  question:"برای حل این مسئله، اول باید تعداد بسته‌ها را پیدا کنیم و بعد تعداد مدادها را: در هر بسته ۶ مداد است و ۴ بسته داریم. کدام عبارت راه‌حل درست را نشان می‌دهد؟",
+  choices:["۶ + ۴","۶ × ۴","۶ − ۴","۶ ÷ ۴"],answer:1,hint:"مسئله را به دو پرسش کوچک تبدیل کن: چند گروه داریم؟ در هر گروه چند مداد است؟ برای جمع تعدادهای مساوی از ضرب استفاده می‌کنیم."},
+ {title:"راز عدد مجهول",strategy:"روش نمادین",icon:"🔐",type:"number",
+  question:"عدد پنهان را پیدا کن: سه برابر یک عدد به‌علاوه ۵ برابر ۲۶ است. آن عدد چیست؟",
+  answer:"7",hint:"عدد پنهان را با x نشان بده: ۳x + ۵ = ۲۶. ابتدا ۵ را از ۲۶ کم کن و سپس حاصل را بر ۳ تقسیم کن."}
+];
+let current=0,errors=0,score=0,startedAt=0,timerHandle=null,student=null,attempts=Array(8).fill(0),responses=[];
+let selectedChoice=null,answered=false;
+const $=id=>document.getElementById(id);
+function faNum(n){return String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[+d]);}
+function fmtTime(sec){let m=Math.floor(sec/60),s=sec%60;return faNum(String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"));}
+function elapsed(){return Math.max(0,Math.floor((Date.now()-startedAt)/1000));}
+function updateStats(){$("scoreStat").textContent="امتیاز: "+faNum(score);$("errorStat").textContent="خطاها: "+faNum(errors);$("timeStat").textContent="زمان: "+fmtTime(elapsed());}
+function startGame(){
+ const first=$("firstName").value.trim(),last=$("lastName").value.trim(),cls=$("className").value.trim();
+ if(!first||!last||!cls){alert("لطفاً نام، نام خانوادگی و نام کلاس را وارد کن.");return;}
+ student={firstName:first,lastName:last,className:cls,nationalCode:$("nationalCode").value.trim()};
+ current=0;errors=0;score=0;attempts=Array(8).fill(0);responses=[];startedAt=Date.now();
+ $("studentLabel").textContent=first+" "+last+" | کلاس "+cls;
+ $("startPanel").classList.add("hidden");$("resultPanel").classList.add("hidden");$("gamePanel").classList.remove("hidden");
+ timerHandle=setInterval(updateStats,1000);renderStage();
+}
+function renderStage(){
+ const q=stages[current];selectedChoice=null;answered=false;
+ $("missionHeading").textContent="مرحله "+faNum(current+1)+" از ۸";
+ $("progressBar").style.width=(current/8*100)+"%";updateStats();
+ let body='<div class="stage-title"><div class="stage-icon">'+q.icon+'</div><div><h2>'+q.title+'</h2><div class="muted small">راهبرد: '+q.strategy+'</div></div></div>';
+ body+='<div class="question">'+q.question+'</div>';
+ if(q.visual)body+=q.visual;
+ body+='<div class="answer-area">';
+ if(q.type==="choice"){
+  body+='<div class="choices">'+q.choices.map((c,i)=>'<button class="choice" data-choice="'+i+'">'+c+'</button>').join("")+'</div>';
+ }else{
+  body+='<label for="answerInput" style="display:block;font-weight:bold;margin-bottom:8px">پاسخ عددی را وارد کن:</label><input class="answer-input" id="answerInput" inputmode="numeric" autocomplete="off" placeholder="عدد پاسخ">';
+ }
+ body+='</div><div id="feedback"></div><div class="actions"><button class="primary" id="checkBtn">بررسی پاسخ ✓</button><button class="secondary hidden" id="nextBtn">رفتن به مرحله بعد ←</button></div>';
+ $("stageContent").innerHTML=body;
+ document.querySelectorAll("[data-choice]").forEach(btn=>btn.addEventListener("click",()=>{if(answered)return;document.querySelectorAll("[data-choice]").forEach(b=>b.classList.remove("selected"));btn.classList.add("selected");selectedChoice=Number(btn.dataset.choice);}));
+ $("checkBtn").addEventListener("click",checkAnswer);
+ const input=$("answerInput");if(input)input.addEventListener("keydown",e=>{if(e.key==="Enter")checkAnswer();});
+}
+function checkAnswer(){
+ if(answered)return;
+ const q=stages[current];let isCorrect=false,submitted="";
+ if(q.type==="choice"){
+  if(selectedChoice===null){$("feedback").innerHTML='<div class="feedback bad">ابتدا یکی از پاسخ‌ها را انتخاب کن.</div>';return;}
+  submitted=q.choices[selectedChoice];isCorrect=selectedChoice===q.answer;
+ }else{
+  submitted=$("answerInput").value.trim().replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
+  if(!submitted){$("feedback").innerHTML='<div class="feedback bad">پاسخت را وارد کن.</div>';return;}
+  isCorrect=Number(submitted)===Number(q.answer);
+ }
+ attempts[current]++;
+ responses[current]={stage:q.title,strategy:q.strategy,answer:submitted,correct:isCorrect,attempts:attempts[current]};
+ if(isCorrect){
+  answered=true;score+=Math.max(5,10-(attempts[current]-1)*2);
+  $("feedback").innerHTML='<div class="feedback good">آفرین! پاسخ درست است. نشان این مرحله را گرفتی. 🏅</div>';
+  $("checkBtn").classList.add("hidden");$("nextBtn").classList.remove("hidden");
+  $("progressBar").style.width=((current+1)/8*100)+"%";
+  if(q.type==="choice")document.querySelectorAll("[data-choice]").forEach((b,i)=>{b.disabled=true;if(i===q.answer)b.classList.add("correct");});
+  else $("answerInput").disabled=true;
+  $("nextBtn").textContent=current===7?"دریافت نشان قهرمان 🏆":"مرحله بعد ←";
+  $("nextBtn").addEventListener("click",()=>{if(current<7){current++;renderStage();}else finishGame();},{once:true});
+ }else{
+  errors++;
+  $("feedback").innerHTML='<div class="feedback bad">این پاسخ درست نیست؛ دوباره تلاش کن.</div><div class="hint">💡 راهنمایی: '+q.hint+'</div>';
+  if(q.type==="choice"){const b=document.querySelector('[data-choice="'+selectedChoice+'"]');if(b)b.classList.add("wrong");}
+ }
+ updateStats();
+}
+function finishGame(){
+ clearInterval(timerHandle);const duration=elapsed();
+ $("gamePanel").classList.add("hidden");$("resultPanel").classList.remove("hidden");
+ const percent=Math.round(score/80*100),medal=percent>=90?"🥇":percent>=70?"🥈":"🥉";
+ const record={id:makeId(),student,score,maxScore:80,errors,durationSeconds:duration,completedAt:new Date().toISOString(),responses,medal};
+ saveRecord(record);
+ $("resultPanel").innerHTML='<div class="certificate"><div class="medal">'+medal+'</div><h2>تبریک، قهرمان حل مسئله!</h2><p>'+student.firstName+' '+student.lastName+' عزیز، تو هر ۸ مرحله را با موفقیت پشت سر گذاشتی.</p><h2>'+faNum(score)+' از ۸۰ امتیاز</h2><p>زمان: '+fmtTime(duration)+' | تعداد پاسخ‌های اشتباه: '+faNum(errors)+'</p><p>نشان نهایی: <strong>🏆 قهرمان حل مسئله</strong></p><button class="primary" id="downloadResult">دانلود کارنامه JSON</button> <button class="secondary" id="restartBtn">شروع دوباره</button></div><h3 style="margin-top:22px">گزارش مرحله‌ها</h3><table><tr><th>مرحله</th><th>راهبرد</th><th>تلاش</th><th>نتیجه</th></tr>'+responses.map((r,i)=>'<tr><td>'+faNum(i+1)+'</td><td>'+r.strategy+'</td><td>'+faNum(r.attempts)+'</td><td>درست ✓</td></tr>').join("")+'</table>';
+ $("downloadResult").addEventListener("click",()=>downloadJSON(record,"کارنامه-"+safeFile(student.firstName+"-"+student.lastName)+".json"));
+ $("restartBtn").addEventListener("click",()=>{ $("resultPanel").classList.add("hidden");$("startPanel").classList.remove("hidden");});
+}
+function makeId(){return "r-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);}
+function safeFile(s){return s.replace(/[^\w\-آ-ی]/g,"_");}
+function readRecords(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");return Array.isArray(x)?x:[];}catch(e){return [];}}
+function saveRecord(r){const all=readRecords();all.push(r);localStorage.setItem(STORAGE_KEY,JSON.stringify(all));}
+function downloadJSON(data,name){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+$("startBtn").addEventListener("click",startGame);
+$("teacherOpen").addEventListener("click",()=>{$("teacherModal").classList.remove("hidden");$("teacherLogin").classList.remove("hidden");$("teacherDashboard").classList.add("hidden");$("teacherPassword").value="";$("loginMessage").textContent="";});
+$("teacherClose").addEventListener("click",()=>$("teacherModal").classList.add("hidden"));
+$("teacherLoginBtn").addEventListener("click",()=>{
+ if($("teacherPassword").value===TEACHER_PASSWORD){$("teacherLogin").classList.add("hidden");$("teacherDashboard").classList.remove("hidden");renderTeacher();}
+ else $("loginMessage").textContent="رمز عبور نادرست است.";
+});
+$("teacherPassword").addEventListener("keydown",e=>{if(e.key==="Enter")$("teacherLoginBtn").click();});
+$("logoutTeacher").addEventListener("click",()=>{$("teacherDashboard").classList.add("hidden");$("teacherLogin").classList.remove("hidden");});
+function renderTeacher(){
+ const all=readRecords();
+ if(!all.length){$("teacherResults").innerHTML='<p class="muted">هنوز نتیجه‌ای در این مرورگر ثبت نشده است.</p>';return;}
+ $("teacherResults").innerHTML='<h3>نتایج ثبت‌شده: '+faNum(all.length)+'</h3><table class="teacher-table"><tr><th>نام و نام خانوادگی</th><th>کلاس</th><th>کد ملی</th><th>امتیاز</th><th>وضعیت</th><th>زمان</th><th>جزئیات</th></tr>'+all.map((r,i)=>'<tr><td>'+esc((r.student?.firstName||"")+" "+(r.student?.lastName||""))+'</td><td>'+esc(r.student?.className||"-")+'</td><td>'+esc(r.student?.nationalCode||"-")+'</td><td>'+faNum(r.score??0)+' / ۸۰</td><td>تکمیل‌شده</td><td>'+fmtTime(r.durationSeconds||0)+'</td><td><button class="secondary small" data-detail="'+i+'">مشاهده</button></td></tr>').join("")+'</table><div id="detailBox"></div>';
+ document.querySelectorAll("[data-detail]").forEach(b=>b.addEventListener("click",()=>showDetail(all[Number(b.dataset.detail)])));
+}
+function showDetail(r){
+ const rows=(r.responses||[]).map((x,i)=>'<tr><td>'+faNum(i+1)+'</td><td>'+esc(x.strategy||"")+'</td><td>'+esc(String(x.answer??""))+'</td><td>'+faNum(x.attempts||0)+'</td><td>'+(x.correct?"درست":"نادرست")+'</td></tr>').join("");
+ $("detailBox").innerHTML='<div class="answer-area"><h3>جزئیات پاسخ‌ها</h3><p>تاریخ ثبت: '+esc(r.completedAt||"-")+'</p><table><tr><th>مرحله</th><th>راهبرد</th><th>پاسخ ثبت‌شده</th><th>تلاش</th><th>نتیجه</th></tr>'+rows+'</table></div>';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("exportAllBtn").addEventListener("click",()=>downloadJSON({exportedAt:new Date().toISOString(),results:readRecords()},"همه-نتایج-ریاضی.json"));
+$("importBtn").addEventListener("click",()=>$("importFile").click());
+$("importFile").addEventListener("change",async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{
+  const data=JSON.parse(await file.text());let incoming=Array.isArray(data)?data:(Array.isArray(data.results)?data.results:[data]);
+  if(!incoming.every(x=>x&&x.student&&typeof x.score==="number"))throw new Error("ساختار فایل معتبر نیست");
+  const currentRecords=readRecords(),ids=new Set(currentRecords.map(x=>x.id));
+  incoming.forEach(x=>{if(!x.id||!ids.has(x.id)){if(!x.id)x.id=makeId();currentRecords.push(x);ids.add(x.id);}});
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(currentRecords));renderTeacher();alert("نتایج با موفقیت وارد شدند.");
+ }catch(err){alert("فایل قابل خواندن نیست یا قالب آن معتبر نیست.");}
+ e.target.value="";
+});
+</script>
+</body>
+</html>
